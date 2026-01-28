@@ -4,7 +4,6 @@ import { Button } from "./ui/button";
 import { Loader2, LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Image from "next/image";
-import { motion } from "motion/react";
 
 const AuthButton = () => {
   const { data: session, isPending } = useSession();
@@ -47,10 +46,6 @@ const AuthButton = () => {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 40 }}
-      animate={{ opacity: 1, x: 0, transition: { duration: 0.8 } }}
-    >
       <Button
         className="flex justify-center items-center gap-2"
         onClick={handleSignIn}
@@ -63,7 +58,6 @@ const AuthButton = () => {
         />{" "}
         <p>Sign in with Google</p>
       </Button>
-    </motion.div>
   );
 };
 
