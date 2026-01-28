@@ -6,6 +6,14 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import prisma from "@/lib/prisma";
 
 
+type Post = {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
 
 
@@ -84,7 +92,7 @@ export default async function Home() {
         <h2 className="text-2xl font-bold mb-4">Recent Posts</h2>
 
           {posts.length > 0? (<div>
-            {posts.map(post => <Card 
+            {posts.map((post : Post) => <Card 
             className="hover:bg-accent transition-colors mb-2"
               key={post.id}>
                 <Link href={`/blog/${post.slug}`}>
