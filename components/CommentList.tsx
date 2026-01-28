@@ -1,5 +1,6 @@
 import { Card, CardContent } from "./ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
+export const dynamic = "force-dynamic"
 
 type Comment = {
     id: string;
