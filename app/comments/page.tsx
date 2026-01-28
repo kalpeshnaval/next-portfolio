@@ -13,7 +13,7 @@ const CommentsPage = async() => {
         orderBy: {createdAt : "desc"}
     })
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen py-16 px-4">
         <div className="max-w-2xl mx-auto">
             <Button variant={"ghost"} asChild className="mb-8">
                 <Link href={"/"}>
