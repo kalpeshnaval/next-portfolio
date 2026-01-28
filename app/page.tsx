@@ -69,7 +69,6 @@ export default async function Home() {
           <Button variant={"secondary"}>PostgreSQL</Button>
           <Button variant={"secondary"}>MongoDB</Button>
           <Button variant={"secondary"}>Git & GitHub</Button>
-          <Button variant={"secondary"}>Vercel</Button>
         </div>
       </section>
 
