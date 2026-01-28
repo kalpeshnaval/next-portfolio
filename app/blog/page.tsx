@@ -29,7 +29,7 @@ const BlogPage = async () => {
         </Button>
         <h1 className="text-3xl font-bold mb-8">Blog</h1>
         {posts.length > 0? (<div>
-            {posts.map(post => <Card 
+            {posts.map((post : Post) => <Card 
             className="hover:bg-accent transition-colors mb-2"
               key={post.id}>
                 <Link href={`/blog/${post.slug}`}>
