@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic"
 
 
 const CommentsPage = async() => {
-    const comments = await prisma.comment?.findMany({
+    const comments = await prisma.comment.findMany({
         include: {user : true},
         orderBy: {createdAt : "desc"}
     })

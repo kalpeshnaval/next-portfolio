@@ -1,6 +1,5 @@
 import { Card, CardContent } from "./ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
-export const dynamic = "force-dynamic"
 
 type Comment = {
     id: string;
@@ -14,7 +13,7 @@ type Comment = {
 
 
 const CommentList = ({comments} : {comments : Comment[]}) => {
-    if(comments?.length === 0) {
+    if(comments.length === 0) {
         <p className="text-muted-foreground text-center py-8">
             No comments yet. Bet the first to leave one!
         </p>
