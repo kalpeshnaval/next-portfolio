@@ -1,4 +1,3 @@
-import { Comment } from "@prisma/client"
 import { Card, CardContent } from "./ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 
