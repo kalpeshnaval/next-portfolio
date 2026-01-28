@@ -15,7 +15,7 @@ export default function Markdown({ content } : {content: string}) {
         h3: ({ children }) => (
           <h3 className="text-lg font-semibold mt-4 mb-2">{children}</h3>
         ),
-        p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
+        p: ({ children }) => <p className="mb-4 leading-relaxed text-wrap">{children}</p>,
         ul: ({ children }) => (
           <ul className="list-disc pl-6 mb-4">{children}</ul>
         ),
