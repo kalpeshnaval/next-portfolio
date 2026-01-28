@@ -4,8 +4,17 @@ import prisma from "@/lib/prisma";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
+type PostProps = {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    title: string;
+    content: string;
+    slug: string;
+}[]
+
 const BlogPage = async () => {
-  const posts = await prisma.blogPost.findMany({
+  const posts : PostProps = await prisma.blogPost.findMany({
     orderBy: { createdAt: "desc" },
     take: 2,
   });
