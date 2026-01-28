@@ -1,65 +1,110 @@
-import Image from "next/image";
 
-export default function Home() {
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight, MessageCircle, Mail } from "lucide-react";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import prisma from "@/lib/prisma";
+
+
+
+
+
+export default async function Home() {
+  
+  const posts = await prisma.blogPost.findMany({
+    orderBy : {createdAt : "desc"},
+    take : 2
+  })
+
+  // const posts = []
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main 
+    className="min-h-screen"
+    >
+
+      {/* Header section */}
+
+      <section className="flex flex-col items-center justify-center py-20 px-4 text-center">
+        <h1 className="text-4xl font-bold mb-4">Hi, I&apos;m Kalpesh Naval</h1>
+        <p className="text-muted-foreground text-lg max-w-md mb-6">Full-Stack Developer building modern, fast & scalable web apps with <span className="font-semibold">Next.js & TypeScript</span></p>
+        
+        <div className="sm:flex sm:gap-4 space-x-2 space-y-2 grid">
+          <Button asChild>
+            <Link href={"/blog"}>Read Blog</Link>
+          </Button>
+          <Button variant={"outline"} asChild>
+            <Link href={"/comments"}>
+              <MessageCircle className="w-4 h-4 mr-2" />
+              Leave a Comment
+            </Link>
+          </Button>
+          <Button className="bg-blue-500 hover:bg-blue-600 transition-colors" asChild>
+            <Link href={"mailto:kalpeshnaval@outlook.com"}>              
+              <Mail className="w-4 h-4 mr-2" /> Contact Me
+            </Link>
+          </Button>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Tech Stack I work with */}
+
+      <section className="pb-16 px-4 max-w-3xl mx-auto">
+        <h2 className="text-2xl font-bold mb-4">Tech Stack I Work With</h2>
+        <div className="space-x-2 space-y-2">
+          <Button variant={"secondary"}>Next.js</Button>
+          <Button variant={"secondary"}>React</Button>
+          <Button variant={"secondary"}>Tailwind</Button>
+          <Button variant={"secondary"}>shadcn/ui</Button>
+          <Button variant={"secondary"}>Node.js</Button>
+          <Button variant={"secondary"}>Prisma</Button>
+          <Button variant={"secondary"}>PostgreSQL</Button>
+          <Button variant={"secondary"}>MongoDB</Button>
+          <Button variant={"secondary"}>Git & GitHub</Button>
+          <Button variant={"secondary"}>Vercel</Button>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* About me section */}
+
+      <section className="pb-16 px-4 max-w-3xl mx-auto">
+        <h2 className="text-2xl font-bold mb-4">About Me</h2>
+        <p className="text-muted-foreground mb-4">
+          I&apos;m a full-stack developer specializing in building real-world web applications using Next.js and TypeScript. I enjoy turning complex problems into clean, scalable solutions, and I&apos;m always eager to learn new technologies.
+        </p>
+        <p className="text-muted-foreground">
+          Currently, I&apos;m focused on building production-ready full-stack projects. When i&apos;m not coding, I enjoy <span className="text-semibold">cooking</span> and sharing my secreat recepies.
+        </p>
+
+      </section>
+
+      {/* Reace posts section*/}
+
+      <section className="pb-16 px-4 max-w-3xl mx-auto">
+        <h2 className="text-2xl font-bold mb-4">Recent Posts</h2>
+
+          {posts.length > 0? (<div>
+            {posts.map(post => <Card 
+            className="hover:bg-accent transition-colors mb-2"
+              key={post.id}>
+                <Link href={`/blog/${post.slug}`}>
+              <CardHeader>
+              <CardTitle>{post.title}</CardTitle>
+              <CardDescription>
+                {new Date(post.createdAt).toLocaleDateString()}
+              </CardDescription>
+              </CardHeader>
+              </Link>
+            </Card>)}
+          </div>) : (<p className="text-muted-foreground">
+          No posts yet.
+        </p>)}
+        <Button variant={"link"} asChild className="mt-4 px-0">
+          <Link href={"/blog"}>
+          View all posts <ArrowRight className="w-4 h-4 ml-1"/>
+          </Link>
+        </Button>
+      </section>
+    </main>
   );
 }
