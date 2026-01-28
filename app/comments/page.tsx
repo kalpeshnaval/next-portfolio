@@ -5,6 +5,7 @@ import Link from "next/link"
 import AuthButton from "@/components/AuthButton"
 import CommentForm from "@/components/CommentForm"
 import CommentList from "@/components/CommentList"
+export const dynamic = "force-dynamic"
 
 
 const CommentsPage = async() => {
