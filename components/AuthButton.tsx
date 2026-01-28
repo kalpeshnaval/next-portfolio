@@ -56,7 +56,7 @@ const AuthButton = () => {
           height={16}
           alt="google icon"
         />{" "}
-        <p>Sign in with Google</p>
+        <p>Sign in</p>
       </Button>
   );
 };
