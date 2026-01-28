@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import prisma from "@/lib/prisma";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -39,7 +39,6 @@ const BlogPage = async () => {
                 {new Date(post.createdAt).toLocaleDateString()}
               </CardDescription>
               </CardHeader>
-              {/* <CardContent>{post.content}</CardContent> */}
               </Link>
             </Card>)}
           </div>) : (<p className="text-muted-foreground">

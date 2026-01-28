@@ -1,28 +1,29 @@
-"use client"
-import { signIn, signOut, useSession } from "@/lib/auth-client"
-import { Button } from "./ui/button"
-import {Loader2, LogOut} from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
-import Image from "next/image"
-import {motion} from "motion/react"
-
+"use client";
+import { signIn, signOut, useSession } from "@/lib/auth-client";
+import { Button } from "./ui/button";
+import { Loader2, LogOut } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import Image from "next/image";
+import { motion } from "motion/react";
 
 const AuthButton = () => {
-    const {data: session , isPending} = useSession()
-    if(isPending) {
-        return <div className="flex items-center gap-2 text-muted-foreground">
-            <Loader2 className="w-4 h-4 animate-spin" />
-            Loading...
-        </div>
-    }
-    async function handleSignIn() {
-        await signIn.social({
-            provider: "google"
-        })
-    }
+  const { data: session, isPending } = useSession();
+  if (isPending) {
+    return (
+      <div className="flex items-center gap-2 text-muted-foreground">
+        <Loader2 className="w-4 h-4 animate-spin" />
+        Loading...
+      </div>
+    );
+  }
+  async function handleSignIn() {
+    await signIn.social({
+      provider: "google",
+      callbackURL: "/comments",
+    });
+  }
 
-
-    if (session?.user) {
+  if (session?.user) {
     return (
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
@@ -45,16 +46,25 @@ const AuthButton = () => {
     );
   }
 
-
   return (
     <motion.div
-    initial={{ opacity: 0, x:40}}
-    animate={{ opacity: 1, x: 0, transition: {duration: 0.8}}}
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0, transition: { duration: 0.8 } }}
     >
-      <Button className="flex justify-center items-center gap-2" onClick={handleSignIn}><Image src={"google-color.svg"} width={16} height={16} alt="google icon" /> <p>Sign in with Google</p></Button>
+      <Button
+        className="flex justify-center items-center gap-2"
+        onClick={handleSignIn}
+      >
+        <Image
+          src={"google-color.svg"}
+          width={16}
+          height={16}
+          alt="google icon"
+        />{" "}
+        <p>Sign in with Google</p>
+      </Button>
     </motion.div>
-    
-  )
-}
+  );
+};
 
-export default AuthButton
+export default AuthButton;
