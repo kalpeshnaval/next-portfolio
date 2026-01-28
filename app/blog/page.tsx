@@ -39,7 +39,7 @@ const BlogPage = async () => {
                 {new Date(post.createdAt).toLocaleDateString()}
               </CardDescription>
               </CardHeader>
-              <CardContent>{post.content}</CardContent>
+              {/* <CardContent>{post.content}</CardContent> */}
               </Link>
             </Card>)}
           </div>) : (<p className="text-muted-foreground">
